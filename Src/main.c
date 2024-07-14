@@ -341,7 +341,7 @@ int main(void) {
       }
       #endif
 
-      #if defined(TANK_STEERING) && !defined(VARIANT_HOVERCAR) && !defined(VARIANT_SKATEBOARD) 
+      #if defined(TANK_STEERING) && !defined(VARIANT_HOVERCAR) 
         // Tank steering (no mixing)
         cmdL = steer; 
         cmdR = speed;
