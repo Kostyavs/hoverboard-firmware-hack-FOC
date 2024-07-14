@@ -1058,7 +1058,7 @@ void readCommand(void) {
       #if !defined(VARIANT_SKATEBOARD)
         calcInputCmd(&input2[inIdx], INPUT_MIN, INPUT_MAX);
       #else
-        calcInputCmd(&input2[inIdx], INPUT_BRK, INPUT_MAX);
+        calcInputCmd(&input2[inIdx], INPUT_MIN, INPUT_MAX);
       #endif
     #endif
 
