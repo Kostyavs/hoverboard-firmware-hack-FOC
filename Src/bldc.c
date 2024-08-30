@@ -169,9 +169,9 @@ void DMA1_Channel1_IRQHandler(void) {
   OverrunFlag = true;
 
   /* Make sure to stop BOTH motors in case of an error */
-  // enableFin = enable && !rtY_Left.z_errCode && !rtY_Right.z_errCode;
-  enableFinLeft = enable;
-  enableFinRight = enable;
+  enableFin = enable && !rtY_Left.z_errCode && !rtY_Right.z_errCode;
+  // enableFinLeft = enable;
+  // enableFinRight = enable;
  
   // ========================= LEFT MOTOR ============================ 
     // Get hall sensors values
