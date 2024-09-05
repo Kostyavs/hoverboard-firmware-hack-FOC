@@ -365,7 +365,7 @@ int main(void) {
       #ifdef VARIANT_SKATEBOARD  // add both motors control by one pin 
         //cmdL = cmdR
         pwml = pwmr;
-      #endif
+      #endif
     #endif
 
     #ifdef VARIANT_TRANSPOTTER
