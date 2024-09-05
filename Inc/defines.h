@@ -167,9 +167,9 @@
 #define PWM_PIN_CH2         GPIO_PIN_3
 #define PWM_PORT_CH2        GPIOA
 #elif defined(CONTROL_PWM_RIGHT)
-#define PWM_PIN_CH1         GPIO_PIN_11
+#define PWM_PIN_CH1         GPIO_PIN_10
 #define PWM_PORT_CH1        GPIOB
-#define PWM_PIN_CH2         GPIO_PIN_10
+#define PWM_PIN_CH2         GPIO_PIN_11
 #define PWM_PORT_CH2        GPIOB
 #endif
 
