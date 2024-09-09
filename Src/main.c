@@ -304,23 +304,23 @@ int main(void) {
       }
       #endif
 
-      #ifdef VARIANT_SKATEBOARD
-      float difference = fabs(rtY_Left.n_mot - rtY_Left.n_mot);
-      float ten_percent = 0.1 * (rtY_Left.n_mot > rtY_Right.n_mot ? rtY_Right.n_mot : rtY_Left.n_mot);
+      // #ifdef VARIANT_SKATEBOARD
+      // float difference = fabs(rtY_Left.n_mot - rtY_Left.n_mot);
+      // float ten_percent = 0.1 * (rtY_Left.n_mot > rtY_Right.n_mot ? rtY_Right.n_mot : rtY_Left.n_mot);
 
-      if (difference <= ten_percent) {
-          if (rtY_Left.n_mot > rtY_Right.n_mot) {
-            rtP_Left.n_max = ten_percent + rtY_Right.n_mot;
-            rtP_Right.n_max = N_MOT_MAX << 4;
-          } else {
-            rtP_Right.n_max = ten_percent + rtY_Right.n_mot;
-            rtP_Left.n_max = N_MOT_MAX << 4;
-          }
-      } else {
-          rtP_Left.n_max = N_MOT_MAX << 4;
-          rtP_Right.n_max = N_MOT_MAX << 4;
-      }
-      #endif
+      // if (difference <= ten_percent) {
+      //     if (rtY_Left.n_mot > rtY_Right.n_mot) {
+      //       rtP_Left.n_max = ten_percent + rtY_Right.n_mot;
+      //       rtP_Right.n_max = N_MOT_MAX << 4;
+      //     } else {
+      //       rtP_Right.n_max = ten_percent + rtY_Right.n_mot;
+      //       rtP_Left.n_max = N_MOT_MAX << 4;
+      //     }
+      // } else {
+      //     rtP_Left.n_max = N_MOT_MAX << 4;
+      //     rtP_Right.n_max = N_MOT_MAX << 4;
+      // }
+      // #endif
 
       // #ifdef VARIANT_SKATEBOARD
       //   if (input2[inIdx].cmd < 0) {                                // When Throttle is negative, it acts as brake. This condition is to make sure it goes to 0 as we reach standstill (to avoid Reverse driving) 
