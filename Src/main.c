@@ -313,7 +313,7 @@ int main(void) {
             rtP_Left.n_max = ten_percent + rtY_Right.n_mot;
             rtP_Right.n_max = N_MOT_MAX << 4;
           } else {
-            rtP_Right.n_max = ten_percent + rtP_Left.n_mot;
+            rtP_Right.n_max = ten_percent + rtY_Right.n_mot;
             rtP_Left.n_max = N_MOT_MAX << 4;
           }
       } else {
