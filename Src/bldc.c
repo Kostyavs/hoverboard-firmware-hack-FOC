@@ -67,8 +67,6 @@ static uint8_t  buzzerIdx   = 0;
 
 uint8_t        enable       = 0;        // initially motors are disabled for SAFETY
 static uint8_t enableFin    = 0;
-static uint8_t enableFinLeft    = 0;
-static uint8_t enableFinRight    = 0;
 
 static const uint16_t pwm_res  = 64000000 / 2 / PWM_FREQ; // = 2000
 
@@ -170,8 +168,6 @@ void DMA1_Channel1_IRQHandler(void) {
 
   /* Make sure to stop BOTH motors in case of an error */
   enableFin = enable && !rtY_Left.z_errCode && !rtY_Right.z_errCode;
-  enableFinLeft = enable && !rtY_Left.z_errCode
-  enableFinRight = enable && !rtY_Right.z_errCode
  
   // ========================= LEFT MOTOR ============================ 
     // Get hall sensors values
@@ -180,7 +176,7 @@ void DMA1_Channel1_IRQHandler(void) {
     uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
 
     /* Set motor inputs here */
-    rtU_Left.b_motEna     = enableFinLeft;
+    rtU_Left.b_motEna     = enableFin;
     rtU_Left.z_ctrlModReq = ctrlModReq;  
     rtU_Left.r_inpTgt     = pwml;
     rtU_Left.b_hallA      = hall_ul;
@@ -218,7 +214,7 @@ void DMA1_Channel1_IRQHandler(void) {
     uint8_t hall_wr = !(RIGHT_HALL_W_PORT->IDR & RIGHT_HALL_W_PIN);
 
     /* Set motor inputs here */
-    rtU_Right.b_motEna      = enableFinRight;
+    rtU_Right.b_motEna      = enableFin;
     rtU_Right.z_ctrlModReq  = ctrlModReq;
     rtU_Right.r_inpTgt      = pwmr;
     rtU_Right.b_hallA       = hall_ur;
