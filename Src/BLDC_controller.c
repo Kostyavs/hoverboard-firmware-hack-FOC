@@ -3165,7 +3165,8 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   /* Outport: '<Root>/n_mot' incorporates:
    *  DataTypeConversion: '<S1>/Data Type Conversion1'
    */
-  rtY->n_mot = (int16_T)(Switch2 >> 4);
+  // rtY->n_mot = (int16_T)(Switch2 >> 4);
+  rtY->n_mot = (int16_T)((Switch2 >> 4) / 2);
 
   /* Outport: '<Root>/a_elecAngle' incorporates:
    *  DataTypeConversion: '<S1>/Data Type Conversion3'
