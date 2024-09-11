@@ -99,6 +99,8 @@ InputStruct input1[INPUTS_NR] = { {0, 0, 0, PRI_INPUT1} };
 InputStruct input2[INPUTS_NR] = { {0, 0, 0, PRI_INPUT2} };
 #endif
 
+int16_t  rtY_Left_n_mot;                      // average measured speed
+int16_t  rtY_Right_n_mot;                      // average measured speed
 int16_t  speedAvg;                      // average measured speed
 int16_t  speedAvgAbs;                   // average measured speed in absolute
 uint8_t  timeoutFlgADC    = 0;          // Timeout Flag for ADC Protection:    0 = OK, 1 = Problem detected (line disconnected or wrong ADC data)
