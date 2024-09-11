@@ -619,8 +619,8 @@
  * Channel 1: steering, Channel 2: speed.
 */
   #define FLASH_WRITE_KEY     0x1010    // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
-  #undef  CTRL_MOD_REQ
-  #define CTRL_MOD_REQ        TRQ_MODE  // SKATEBOARD works best in TORQUE Mode
+  #undef  CTRL_TYP_SEL
+  #define CTRL_TYP_SEL        SIN_CTRL  // SKATEBOARD works best in TORQUE Mode
   #define CONTROL_PWM_LEFT    0         // use RC PWM as input on the LEFT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART2!
   // #define CONTROL_PWM_RIGHT   0         // use RC PWM as input on the RIGHT cable.  Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART3!
 
