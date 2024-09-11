@@ -1110,7 +1110,8 @@ void BLDC_controller_step(RT_MODEL *const rtM)
      *  UnitDelay: '<S13>/UnitDelay3'
      *  UnitDelay: '<S17>/UnitDelay4'
      */
-    Switch2 = (int16_T)(rtDW->z_counterRawPrev - rtDW->UnitDelay4_DSTATE);
+    // Switch2 = (int16_T)(rtDW->z_counterRawPrev - rtDW->UnitDelay4_DSTATE);
+    Switch2 = (int16_T)((rtDW->z_counterRawPrev / 5) - (rtDW->UnitDelay4_DSTATE / 5));
 
     /* Abs: '<S17>/Abs2' */
     if (Switch2 < 0) {
@@ -3165,8 +3166,8 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   /* Outport: '<Root>/n_mot' incorporates:
    *  DataTypeConversion: '<S1>/Data Type Conversion1'
    */
-  // rtY->n_mot = (int16_T)(Switch2 >> 4);
-  rtY->n_mot = (int16_T)((Switch2 >> 4) / 2);
+  rtY->n_mot = (int16_T)(Switch2 >> 4);
+  // rtY->n_mot = (int16_T)((Switch2 >> 4) / 2);
 
   /* Outport: '<Root>/a_elecAngle' incorporates:
    *  DataTypeConversion: '<S1>/Data Type Conversion3'
