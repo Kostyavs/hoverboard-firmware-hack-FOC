@@ -628,7 +628,7 @@
   #define PRI_INPUT2          2, -1000, 0, 1000, 100    // Active.   TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   // #define INPUT_BRK           -400      // (-1000 - 0) Change this value to adjust the braking amount
 
-  #define FILTER              3276      // 0.1f [-] fixdt(0,16,16) lower value == softer filter [0, 65535] = [0.0 - 1.0].
+  #define FILTER              1638      // 0.1f [-] fixdt(0,16,16) lower value == softer filter [0, 65535] = [0.0 - 1.0].
   // #define FILTER              6553      // 0.1f [-] fixdt(0,16,16) lower value == softer filter [0, 65535] = [0.0 - 1.0].
   #define SPEED_COEFFICIENT   16384     // 1.0f [-] fixdt(1,16,14) higher value == stronger. [0, 65535] = [-2.0 - 2.0]. In this case 16384 = 1.0 * 2^14
   #define STEER_COEFFICIENT   16384         // 1.0f [-] fixdt(1,16,14) higher value == stronger. [0, 65535] = [-2.0 - 2.0]. In this case 16384 = 1.0 * 2^14. If you do not want any steering, set it to 0.
