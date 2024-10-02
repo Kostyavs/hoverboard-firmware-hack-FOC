@@ -116,6 +116,8 @@ int16_t cmdR;                    // global variable for Right Command
 //------------------------------------------------------------------------
 // Local variables
 //------------------------------------------------------------------------
+int16_t pwmr_prev = 0;               // save value of pwmr on previous step (used for smothing pwmr)
+int16_t pwml_prev = 0;               // save value of pwml on previous step (used for smothing pwml)
 #if defined(FEEDBACK_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART3)
 typedef struct{
   uint16_t  start;
@@ -352,6 +354,11 @@ int main(void) {
 
 
       // ####### SET OUTPUTS (if the target change is less than +/- 100) #######
+      
+      // save previous pwm values
+      pwmr_prev = pwmr;
+      pwml_prev = pwml; 
+
       #ifdef INVERT_R_DIRECTION
         pwmr = cmdR;
       #else
@@ -362,7 +369,13 @@ int main(void) {
       #else
         pwml = cmdL;
       #endif
+
+      // add smoothing pwm output
+      pwmr = 0.01 * pwmr + 0.99 * pwmr_prev;
+      pwml = 0.01 * pwml + 0.99 * pwml_prev; 
+
     #endif
+    
 
     #ifdef VARIANT_TRANSPOTTER
       distance    = CLAMP(input1[inIdx].cmd - 180, 0, 4095);
