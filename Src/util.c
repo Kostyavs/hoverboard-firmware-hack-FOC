@@ -1706,7 +1706,7 @@ void mixerFcn(int16_t rtu_speed, int16_t rtu_steer, int16_t *rty_speedR, int16_t
 void smoothingFcn(int16_t pwm_prev, int16_t target_pwm, int16_t *pwm) {
     int16_t step_numbers = 50;
     int16_t step = (INPUT_MAX - INPUT_MIN) / step_numbers;
-    int32_t tmp;
+    int16_t tmp;
     
     if (pwm_prev < target_pwm) {
       tmp         = pwm_prev + step;
@@ -1718,8 +1718,7 @@ void smoothingFcn(int16_t pwm_prev, int16_t target_pwm, int16_t *pwm) {
       tmp = pwm_prev;
     }
     
-    tmp         = CLAMP(tmp, -32768, 32767);  // Overflow protection
-    *pwm = (int16_t)(tmp >> 4);        // Convert from fixed-point to int
+    *pwm = (int16_t)(tmp);        // Convert from fixed-point to int
     *pwm = CLAMP(*pwm, INPUT_MIN, INPUT_MAX);
 }
 
