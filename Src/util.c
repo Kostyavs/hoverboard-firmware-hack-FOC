@@ -1704,7 +1704,7 @@ void mixerFcn(int16_t rtu_speed, int16_t rtu_steer, int16_t *rty_speedR, int16_t
 
 
 void smoothingFcn(int16_t pwm_prev, int16_t target_pwm, int16_t *pwm) {
-    int16_t step_numbers = 50;
+    int16_t step_numbers = 100;
     int16_t step = (INPUT_MAX - INPUT_MIN) / step_numbers;
     int16_t tmp;
     
