@@ -371,7 +371,9 @@ int main(void) {
       #endif
 
       // add smoothing pwm output
-      pwmr = 0.01 * pwmr + 0.99 * pwmr_prev;
+      //pwmr = 0.01 * pwmr + 0.99 * pwmr_prev;
+      // smooting pwmr
+      smoothingFcn(pwmr_prev, pwmr, &pwmr);
       pwml = 0.01 * pwml + 0.99 * pwml_prev; 
 
     #endif
