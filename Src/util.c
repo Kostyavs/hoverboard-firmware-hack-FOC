@@ -1704,22 +1704,28 @@ void mixerFcn(int16_t rtu_speed, int16_t rtu_steer, int16_t *rty_speedR, int16_t
 
 
 void smoothingFcn(int16_t pwm_prev, int16_t target_pwm, int16_t *pwm) {
-    int16_t step_numbers = 150;
-    int16_t step = (INPUT_MAX - INPUT_MIN) / step_numbers;
-    int16_t tmp;
-    
-    if (pwm_prev < target_pwm) {
-      tmp         = pwm_prev + step;
-      tmp = CLAMP(tmp, pwm_prev, target_pwm);
-    } else if (pwm_prev > target_pwm){
-      tmp         = pwm_prev - step;
-      tmp = CLAMP(tmp, target_pwm, pwm_prev);
-    } else {
-      tmp = pwm_prev;
+    //int16_t step_numbers = 150;
+    if (STEP_NUMBERS <= 0) {
+      // dissable smoothing, *pwm is immediately assigned to target_pwm
+      *pwm = target_pwm;
+    } else
+    {
+      int16_t step = (INPUT_MAX - INPUT_MIN) / STEP_NUMBERS;
+      int16_t tmp;
+      
+      if (pwm_prev < target_pwm) {
+        tmp         = pwm_prev + step;
+        tmp = CLAMP(tmp, pwm_prev, target_pwm);
+      } else if (pwm_prev > target_pwm){
+        tmp         = pwm_prev - step;
+        tmp = CLAMP(tmp, target_pwm, pwm_prev);
+      } else {
+        tmp = pwm_prev;
+      }
+      
+      *pwm = (int16_t)(tmp);        // Convert from fixed-point to int
+      *pwm = CLAMP(*pwm, INPUT_MIN, INPUT_MAX);
     }
-    
-    *pwm = (int16_t)(tmp);        // Convert from fixed-point to int
-    *pwm = CLAMP(*pwm, INPUT_MIN, INPUT_MAX);
 }
 
 
